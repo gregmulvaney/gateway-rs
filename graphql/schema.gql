@@ -1,0 +1,12 @@
+
+
+
+
+type QueryRoot {
+	greet(name: String!): String!
+}
+
+
+schema {
+	query: QueryRoot
+}

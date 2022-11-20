@@ -1,4 +1,5 @@
 mod axum;
+mod cli;
 mod graphql;
 mod grpc;
 mod hybrid;
@@ -18,7 +19,7 @@ async fn main() {
     let hybrid_service = hybrid::make_service(axum_service, grpc_service);
 
     let server = hyper::Server::bind(&addr).serve(hybrid_service);
-
+    cli::listener(&schema);
     println!("Listening on {}", &addr);
 
     if let Err(e) = server.await {
